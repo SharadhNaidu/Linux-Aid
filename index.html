@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux Aid - AI Terminal Assistant</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="node_modules/@xterm/xterm/css/xterm.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app-container">
+        <header>
+            <div class="header-content">
+                <h1>Linux Aid</h1>
+                <span class="subtitle">AI Terminal Assistant</span>
+            </div>
+            <div id="system-info">
+                <span id="system-info-text">Detecting system...</span>
+                <div id="app-status">Detecting system...</div>
+            </div>
+        </header>
+
+        <main>
+            <div id="ai-response-area">
+                <div id="ai-messages">
+                    <div class="welcome-message">
+                        <h3>Welcome to Linux Aid!</h3>
+                        <p>I'm your AI-powered Linux terminal assistant. Tell me what you'd like to do, and I'll help you with commands, troubleshooting, and system management.</p>
+                        <div class="example-prompts">
+                            <p><strong>Try asking me:</strong></p>
+                            <ul>
+                                <li>"Install VS Code"</li>
+                                <li>"My Wi-Fi isn't working"</li>
+                                <li>"Update my system"</li>
+                                <li>"Check disk usage"</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="solution-options"></div>
+                
+                <div id="progress-bar-container">
+                    <div id="progress-bar"></div>
+                    <span id="progress-text">Ready</span>
+                </div>
+            </div>
+            
+            <div id="terminal-container">
+                <div id="terminal-header">
+                    <span>Terminal</span>
+                    <div id="terminal-controls">
+                        <button id="clear-terminal" title="Clear Terminal">Clear</button>
+                    </div>
+                </div>
+                <div id="terminal"></div>
+            </div>
+        </main>
+
+        <footer>
+            <div id="input-container">
+                <input type="text" id="prompt-input" placeholder="Describe what you want to do in Linux..." disabled />
+                <button id="send-prompt-btn" disabled>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 2L11 13"></path>
+                        <path d="M22 2L15 22L11 13L2 9L22 2Z"></path>
+                    </svg>
+                    Send
+                </button>
+            </div>
+        </footer>
+
+        <!-- Modal for sudo/y/n prompts -->
+        <div id="auth-modal" class="modal">
+            <div class="modal-content">
+                <h3>Authentication Required</h3>
+                <p id="auth-message"></p>
+                <div class="input-group">
+                    <input type="password" id="auth-input" placeholder="Enter password or y/n" />
+                    <div class="button-group">
+                        <button id="auth-submit-btn">Submit</button>
+                        <button id="auth-cancel-btn">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notification/Toast area -->
+        <div id="notification-area"></div>
+    </div>
+
+    <script>
+        console.log("[HTML] Basic script in HTML is running");
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("[HTML] DOMContentLoaded in HTML script");
+        });
+    </script>
+    <script src="renderer.js"></script>
+</body>
+</html>
