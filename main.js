@@ -36,8 +36,10 @@ function createWindow() {
 
     mainWindow.loadFile('index.html');
 
-    // Enable DevTools for debugging
-    mainWindow.webContents.openDevTools();
+    // Enable DevTools only in development
+    if (process.env.NODE_ENV === 'development') {
+        mainWindow.webContents.openDevTools();
+    }
     
     // Log when renderer is ready
     mainWindow.webContents.on('dom-ready', () => {
